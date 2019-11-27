@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <title>Jisoo Lee's Resume</title>
+      
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+      
+    <link rel="stylesheet" media="screen" href="css/main.css">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+    
+  <body onload="load();">
+
+        <div class="header">
+            <div class="banner-content">
+                <h1>Jisoo Lee</h1>
+                <h2>Computer Scientist</h2>
+                <div id="openbtn" onclick="nav()">&#9776;</div>
+                <div id="menu" class="menubar">
+                    <a href="index.html">Index</a>
+                    <a href="about.html">About Me</a>
+                    <a href="education.html">Education</a>
+                    <a href="experience.html">Experience</a>
+                    <a href="project.html">Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="section">
+
+                <h3>Projects</h3>
+
+                <p>I am a person who might not do perfectly for examination. However, I always aim for A+ quality projects for my classes. For instance, my group and I have revieved 98% in our software engineering project, and was complimented to be one of the best project in the class, our project is called Eventile, an event finder web application. <a href="https://jlee2967.github.io/Eventile/">More description in this link.</a></p>
+
+                <p>Following programs are some of the assignments I worked on to get high marks on.</p>
+
+                <h4>C - Magic Square Program</h4>
+
+                <p>This program prints an n x n magic square (a square arrangement of the numbers 1, 2, ..., n<sup>2</sup> in which the sum of the elements in any row, column, or diagonal is the same). This program should generate a magic square of a specified size n, where user will specify size at run time. Size must be an odd positive integer between 1 and 99.</p>
+
+                <div class="project-code">
+
+                    <pre>
+# This program prints a n x n magic square where it is numbers from 1 to n^2 which sum up of elements in any row, coloum, or diagonal is the same. Size of magic square should be the size of n which is inputted by user. */
+
+int main(void)
+{
+  int n;
+
+  printf("Enter size of magic square: "); /* Prompts user value for size of magic square */
+  scanf("%d", &n);
+
+  while ((n % 2) == 0 || n >= 13) /* Checks if n is a valid size */
+    {
+      printf("Invalid size, try again...\n");
+      printf("Enter size of magic square: ");
+      scanf("%d", &n);
+    }
+
+  int magic_square[n][n], x = n / 2, y = 0, num = 2, x2, y2, i, j;
+
+  for(i = 0; i != n; i++) /* Sets all the values in matrix equal to 0 */
+    { 
+      for(j = 0; j != n; j++){
+    *( *(magic_square + i) + j) = 0;
+      }
+    }
+
+  *( *(magic_square + y) + x) = 1; /* Sets the middle element of row 0 to 1 */
+
+  while (num != ((n * n) + 1)) /* Checks if there is an attempt to go out of bound. So from row 0, next row won't be row -1, but it will be row n - 1 instead. For coloums, from col n - 1, next row wont be col n,
+   but it will be col 0. Program also checks if array is empty (equals to 0). If it is empty, it fills the num in. If it is not empty, it puts the number directly below the previously stored number */
+    {
+      if (x == (n - 1))
+    {
+      x2 = x;
+      x = 0;
+    }
+      else
+    {
+      x2 = x;
+      x++;
+    }
+      if (y == 0)
+    {
+      y2 = 1;
+      y = (n-1);
+    }
+      else
+    {
+      if(y == (n - 1))
+        {
+          y2 = 0;
+          y--;
+        }
+      else
+        {
+          y2 = (y + 1);
+          y--;
+        }
+    }
+
+      if (*( *(magic_square + y) + x) != 0)
+    {
+      y = y2;
+      x = x2;
+    }
+
+      *( *(magic_square + y) + x) = num;
+      num++;
+    }
+
+  for(i = 0; i != n; i++) /* Prints all the values in array */
+    {
+      for(j = 0; j != n; j++){
+        printf("\t%d", *( *(magic_square + i) + j));
+      }
+      printf("\n");
+    }
+
+}
+                    </pre>
+
+                </div>
+
+                <p>For this program, I have recieved 100% in my assignment for my Software Tools and System Programming Course.</p>
+
+                <h4>C - Minimum Bill Program</h4>
+
+                <p>This program determines the smallest number of $20, $10, $5, $2, and $1 billls/coins necessary to pay a dollar amount.</p>
+
+                <div class="project-code">
+
+                    <pre>
+/* This program determines the smallest number of $20, $10, $5, %2, and $1 bills/coins necessay to pay the amount. */
+
+void pay_amount(int dollars, int *twenties, int *tens, int *fives, int *toonies, int *lonnie);
+
+int main(void)
+{
+  int dollars, twenties, tens, fives, toonies, lonnie; 
+
+  printf("Enter dollar amount: $"); /* Prompts user for the amount. */
+  scanf("%d", &dollars);
+  pay_amount(dollars, &twenties, &tens, &fives, &toonies, &lonnie); /* Calls the helper function to do calculation for how many bills/coins are required */
+  printf("yourchange: \n" /* prints the amount of bills/coins required */
+     "twenties: %d\n"
+     "tens: %d\n"
+     "fives: %d\n"
+     "toonies: %d\n"
+     "lonnie: %d\n", twenties, tens, fives, toonies, lonnie);
+}
+
+void pay_amount(int dollars, int *twenties, int *tens, int *fives, int *toonies, int *lonnie) /* This is the C function that determins the smallest number of bills/coins necessay to pay a dollar amount. 
+{
+  *twenties = dollars / 20;
+  *tens = dollars %20 / 10;
+  *fives = dollars % 10 / 5;
+  *toonies = dollars % 5 / 2;
+  *lonnie = dollars % 5 % 2;
+}
+                        </pre>
+
+                </div>
+
+                <p>For this program, I have recieved 100% in my assignment for my Software Tools and System Programming Course.</p>
+
+                <h4>VBA - Sudoku Solution Checker</h4>
+
+                <p>This program checks the numbers on the cells for sudoku board to see if it is correct or not, and gives the rows, columns, and general range with problem if it is wrong.</p>
+
+                <p>The following code will check for the range for sudoku board. It will return boolean value based on the cell values.</p>
+
+                <div class="project-code">
+
+                    <pre>
+Function checkRange(rng As Range) As Boolean
+
+    Dim result As Boolean
+    Dim found As Boolean
+
+    result = True
+
+    For i = 1 To rng.Count
+        found = False
+
+        For Each Cell In rng.Cells
+            If Cell.Value = i Then
+                found = True
+                Exit For
+            End If
+        Next Cell
+
+        If found = False Then
+            result = False
+            Exit For
+        End If
+    Next i
+
+    checkRange = result
+
+End Function
+                        </pre>
+
+                </div>
+
+                <p>Using this function, every range of cells will need to be checked. Following function (checkAndFormat) will accept range of cells and check to see if range is valid. If invalid, it will change the colour of cell to red. After, the manual input for the cells will be required (checkAll). Like following example.</p>
+
+                <div class="project-code">
+
+                    <pre>
+Sub checkAndFormat(rng As Range)
+    If checkRange(rng) = False Then
+        rng.Interior.ColorIndex = 38
+    End If
+End Sub
+
+Sub checkAll()
+
+    checkAndFormat Range("C4:K4")
+    checkAndFormat Range("C5:K5")
+    checkAndFormat Range("C6:K6")
+    checkAndFormat Range("C7:K7")
+    checkAndFormat Range("C8:K8")
+    checkAndFormat Range("C9:K9")
+    checkAndFormat Range("C10:K10")
+    checkAndFormat Range("C11:K11")
+    checkAndFormat Range("C12:K12")
+
+    checkAndFormat Range("C14:K14")
+    checkAndFormat Range("C15:K15")
+    checkAndFormat Range("C16:K16")
+    checkAndFormat Range("C17:K17")
+    checkAndFormat Range("C18:K18")
+    checkAndFormat Range("C19:K19")
+    checkAndFormat Range("C20:K20")
+    checkAndFormat Range("C21:K21")
+    checkAndFormat Range("C22:K22")
+
+    checkAndFormat Range("C4:C12")
+    checkAndFormat Range("D4:D12")
+    checkAndFormat Range("E4:E12")
+    checkAndFormat Range("F4:F12")
+    checkAndFormat Range("G4:G12")
+    checkAndFormat Range("H4:H12")
+    checkAndFormat Range("I4:I12")
+    checkAndFormat Range("J4:J12")
+    checkAndFormat Range("K4:K12")
+
+    checkAndFormat Range("C14:C22")
+    checkAndFormat Range("D14:D22")
+    checkAndFormat Range("E14:E22")
+    checkAndFormat Range("F14:F22")
+    checkAndFormat Range("G14:G22")
+    checkAndFormat Range("H14:H22")
+    checkAndFormat Range("I14:I22")
+    checkAndFormat Range("J14:J22")
+    checkAndFormat Range("K14:K22")
+
+    checkAndFormat Range("C4:E6")
+    checkAndFormat Range("F4:H6")
+    checkAndFormat Range("I4:K6")
+    checkAndFormat Range("C7:E9")
+    checkAndFormat Range("F7:H9")
+    checkAndFormat Range("I7:K9")
+    checkAndFormat Range("C10:E12")
+    checkAndFormat Range("F10:H12")
+    checkAndFormat Range("I10:K12")
+
+    checkAndFormat Range("C14:E16")
+    checkAndFormat Range("F14:H16")
+    checkAndFormat Range("I14:K16")
+    checkAndFormat Range("C17:E19")
+    checkAndFormat Range("F17:H19")
+    checkAndFormat Range("I17:K19")
+    checkAndFormat Range("C20:E22")
+    checkAndFormat Range("F20:H22")
+    checkAndFormat Range("I20:K22")
+
+End Sub
+                        </pre>
+
+                </div>
+
+                <p>For this program, I have recieved 100% in my assignment for my Data Analytics Course.</p>
+
+                <p>Not only these, I have also excelled in various other assignments. Here are brief description of them.</p>
+
+                <h4>Road Map Path Finder (Course: Data Structure & Algorithms - Achieved Grade: A+)</h4>
+
+                <p>This is a java program where it searches for the path between the starting point to end point. However, there is possibility that path is not available. The challenge for this project is that there could be a toll at the path to the end point, and the user has limited amount of money to pay the tolls. For this program, not only I was able to meet the deadline, I was able to get extra mark for submitting earlier than an actual deadline when many people struggled to submit in time.</p>
+
+                <h4>Simple Database Manager (Course: Data Structure & Algorithms - Achieved Grade: A+)</h4>
+
+                <p>This is a java program where user is able to keep track of the database. Users are able to play/ view any media files. If it is normal text file, program returns text associated with that file. Very basic UI was required to get this program running, also I was required to program classes, which can open/play media files. Same as Road Map Path Finder, I was able to get extra grade for finishing early while others struggled to meet the deadline.</p>
+
+                <h4>Movie Theatre Company Website (Course: Databases I - Achieved Grade: A+)</h4>
+
+                <p>This is a web application created with SQL, Python/Flask, and HTML, which simulates ticket selling system in theatres. Customers can search for movie screenings, buy tickets, and edit their profiles. While Employees can see, track, and edit customer purchase infomrations and movie screenings. Same as two projects I talked about, I was able to earn extra points for finishing early, and bonus grade adding some html designs. Since I am more experienced with HTML/CSS now, I would try to make the web application more appealing to user.</p>
+
+                <p>From these projects, I can say that I am a person who also meets deadline, and exceeds the expectations. I have many other projects where I was able to recieve high marks. To check them out, <a href="https://github.com/kyle782">Click this link</a>.</p>
+
+            </div>
+
+        </div>
+
+        <footer>
+            <p> Contact: Jisoo Lee | <a href="tel:15198549551">(519) 555-5543</a> | <a href="mailto:k_lee89962@fanshaweonline.ca">k_lee89962@fanshaweonline.ca</a></p>
+            </footer>
+        </footer>
+
+        <script>
+
+            var open = false;
+
+            function load() {
+                document.getElementById("menu").style.height = "0px";
+            }
+
+            function nav() {
+                if (!open) {
+                    open = true;
+                    document.getElementById("menu").style.height = "300px";
+                }
+                else {
+                    open = false;
+                    document.getElementById("menu").style.height = "0px";
+                }
+            }
+
+        </script>
+
+  </body>
+</html>

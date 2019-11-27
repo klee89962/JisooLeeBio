@@ -1,0 +1,180 @@
+header, nav, content, section, p{
+	display: block;
+}
+
+body {
+	background: url(../images/background.jpg);
+	/*https://www.designbolts.com/2013/02/04/50-free-grey-seamless-patterns-for-website-background/*/
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font: 100%/ 1.6 'Raleway', sans-serif;
+}
+
+.header {
+	background: url(../images/code.jpg) no-repeat;
+	/*https://techcrunch.com/2016/05/10/please-dont-learn-to-code/*/
+	width: 100%;
+	opacity: 0.6;
+	background-size: cover;
+	background-position: bottom;
+}
+
+.banner-content {
+	padding: 10%;
+	padding-bottom: 0px; 
+}
+
+.banner-content h1 {
+	color: #FF00FF;
+	width: 100%;
+	text-align: center;
+	font-size: 400%;
+	text-shadow: 0 3px 5px #C71585;
+}
+
+.banner-content h2 {
+	color: #FF00FF;
+	width: 100%;
+	text-align: center;
+	font-size: 200%;
+	text-shadow: 0 3px 5px #C71585;
+}
+
+#openbtn {
+    transition: 0.3s;
+    margin: auto;
+    padding-bottom: 40px;
+    font-size: 45px;
+    cursor: pointer;
+    color: #FF00FF;
+    height: 40px;
+    width: 40px;
+}
+
+#openbtn:hover {
+    color: #800080;
+}
+
+.menubar {
+    height: 0px;
+    width: 100%;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.menubar a {
+    height: 60px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 25px;
+    color: #FF00FF;
+    display: block;
+    transition: 0.3s;
+}
+
+.menubar a:hover {
+    background-color: #FF00FF;
+    font-size: 30px;
+    color: #fff;
+}
+
+.content {
+	margin: auto;
+	height: 100%;
+	width: 80%;
+	padding: 1%;
+	background-color: #fff;
+}
+
+.section {
+	margin: 2%;
+	padding: 1%;
+}
+
+.img-section {
+    padding: 10px;
+    text-align: center;
+}
+
+.project-code {
+    padding: 1%;
+    height: 400px;
+    width: 90%;
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: scroll; 
+    background-color: #595959;
+    color: white;
+}
+
+blockquote {
+    padding: 10px;
+    background-color: #595959;
+    border: 2px solid #595959;
+    border-radius: 5px;
+    height: auto;
+}
+
+code {
+    font-family: "Courier New";
+    color: white;
+    height: auto;
+}
+
+p {
+	line-height: 2.5em;
+}
+
+footer{
+	margin: auto;
+	font-size: 20px;
+	width: 78%;
+	clear:both;
+	text-align: center;
+	padding:2%;
+	background-color: #FF00FF;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+footer a:hover {
+	font-size: 25px;
+    color: #b30000;
+}
+
+@media screen and (max-width:800px){
+	
+	.content{
+		width:90%;
+	}
+	
+	footer {
+		width: 88%;
+		font-size: 15px;
+	}
+
+	footer a:hover {
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width:640px){
+	
+	.content{
+		width:100%;
+	}
+
+	.img-section {
+	    display: none;
+	}
+
+	footer {
+		width: 100%;
+	}
+	
+}

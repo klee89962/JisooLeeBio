@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <title>Jisoo Lee's Resume: Experience</title>
+      
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+      
+    <link rel="stylesheet" media="screen" href="css/main.css">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+    
+  <body onload="load();">
+
+        <div class="header">
+            <div class="banner-content">
+                <h1>Jisoo Lee</h1>
+                <h2>Computer Scientist</h2>
+                <div id="openbtn" onclick="nav()">&#9776;</div>
+                <div id="menu" class="menubar">
+                    <a href="index.html">Index</a>
+                    <a href="about.html">About Me</a>
+                    <a href="education.html">Education</a>
+                    <a href="experience.html">Experience</a>
+                    <a href="project.html">Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="section">
+                <h3>Experience</h3>
+
+                <h4>Cashier, Plaza Convinience, St. Thomas, ON, Nov. 2015 - Present</h4>
+                <ul>
+                    <li>Interact with customers professionally, complete transactions efficiently, and ensure positive experiences for customers in order to guarantee future business and return customers</li>
+                    <li>Maintain beverage stock weekly by monitoring sales of each product, and managing product’s freshness</li>
+                    <li>Worked at least 15 hours per week while studying in University and 25 hours per week while on break</li>
+                    <li>Dealing with a wide variety of customers while managing challenging situations using reasoning and conflict management skills</li>
+                </ul>
+                <h4>Cashier, Daisy Mart, London, ON, Oct. 2012 - June 2014</h4>
+                <ul>
+                    <li>Interact with customers professionally, complete transactions efficiently, and ensure positive experiences for customers in order to guarantee future business and return customers</li>
+                    <li>Worked 20 hours per week</li>
+                    <li>Dealing with a wide variety of customers while managing challenging situations using reasoning and conflict management skills</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <footer>
+            <p> Contact: Jisoo Lee | <a href="tel:15198549551">(519) 555-5543</a> | <a href="mailto:k_lee89962@fanshaweonline.ca">k_lee89962@fanshaweonline.ca</a></p>
+            </footer>
+        </footer>
+
+        <script>
+
+            var open = false;
+
+            function load() {
+                document.getElementById("menu").style.height = "0px";
+            }
+
+            function nav() {
+                if (!open) {
+                    open = true;
+                    document.getElementById("menu").style.height = "300px";
+                }
+                else {
+                    open = false;
+                    document.getElementById("menu").style.height = "0px";
+                }
+            }
+
+        </script>
+
+  </body>
+</html>
